@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+  <title>
+    Ting News {{order_by.capitalize()}}
+  </title>
+</head>
+<body>
+  <header>
+    <h1>Ting News</h1>
+    <div>
+      Order by:
+      {% if order_by.lower() == 'new' %}
+      <a href="/?order_by=popular">Popular</a>
+        |
+      <strong>New</strong>
+      {% else %}
+      <strong>Popular</strong>
+        |
+      <a href="/?order_by=new">New</a>
+      {% endif %}
+    </div>
+  </header>
+
+  {% for news in news_list %}
+  <div>
+    <div>
+      <a href="/{{news['objectID']}}">
+        <h3>{{news['title']}}</h3>
+      </a>
+        (<a href="{{news['url']}}" target="_blanl">{{news['url']}}</a>)
+    </div>
+    <div>
+      {{news['points']}} points | By: {{news['author']}} | {{news['num_commets']}} comments
+    </div>
+  </div>
+  <hr>
+  {% endfor %}
+</body>
+</html>

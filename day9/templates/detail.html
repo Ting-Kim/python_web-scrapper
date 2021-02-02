@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+    Ting News | {{news['title']}}     Databricks Raises $1B Series G Investment at $28B Valuation
+  </title>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>{{news['title']}}</h1>
+    <div>
+      {{news['points']}} points | By {{news['author']}} | <a href="{{news['url']}}" target="_blank">{{news['url']}}</a>
+    </div>
+  </header>
+  <main>
+      {% autoescape off %}
+      {% for comm in news['children'] %}
+      <div>
+          <strong>{{comm['author']}}:</strong>
+          {{comm['text']}}
+      </div>
+      <hr>
+      {% endfor %}
+      {% endautoescape %}
+  </main>
+</body>
+</html>
