@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+    <title>
+      Remote Jobs
+    </title>
+    <style>
+      #form {
+        all : none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Remote Jobs</h1>
+      <h3>{{count_jobs}} {{term}} jobs found.</h3>
+      <!-- <form method="POST" style="all: none;" action="/tocsv" id="form"> -->
+        <!-- <h4><a href="javascript:void(0);" name="{{term}}" type="submit">Export to CSV</a></h4> -->
+      <!-- </form> -->
+      <h4><a href="/tocsv?term={{term}}">Export to CSV</a></h4>
+      <h5><a href="/">&lt;- Go back</a><h5>
+    </header>
+    <main>
+      {% autoescape off %}
+      {% for job in jobs %}
+      <div>
+        <h3>{{job['title']}}</h3>
+        <h4>{{job['company']}}</h4>
+        <h4><a href="{{job['href']}}" target="_blank">Apply</a></h4>
+        <hr>
+      </div>
+      {% endfor %}
+      {% endautoescape %}
+    </main>
+  </body>
+</html>
